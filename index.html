@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#123b2a">
+<meta name="theme-color" content="#123b2a"><meta name="description" content="Premium girls PG in Aerocity. ₹8,000 per bed. 4 BHK, 30-bed capacity, secure gated society."><meta property="og:title" content="AeroGreens Girls PG | Premium PG in Aerocity"><meta property="og:description" content="Premium girls PG in Aerocity • ₹8,000 per bed • 4 BHK • 30 beds"><link rel="manifest" href="./manifest.webmanifest">
 <title>AeroGreens Girls PG | Premium PG in Aerocity</title>
 <style>
 :root{--green:#123b2a;--green2:#1d6044;--gold:#c9a45c;--cream:#f7f1e4;--ink:#17251f;--muted:#66736d;--white:#fff}
@@ -74,7 +74,64 @@ footer{background:#0c281c;color:#b8c9c1;text-align:center;padding:30px 20px;font
 <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=H.No.+98+A%2C+AERO+Greens%2C+Opp.+G+Block%2C+Aerocity%2C+140306">Open Google Maps</a>
 </div>
 </div>
-</main>
+
+<section id="enquire" style="margin-top:24px">
+<div class="feature" style="display:block">
+<div class="kicker">Quick Enquiry</div>
+<h2 style="font-family:Georgia,serif;font-size:34px">Find your bed at AeroGreens.</h2>
+<p style="color:var(--muted)">Share your preferred move-in date and we'll prepare a WhatsApp enquiry for you.</p>
+<form id="leadForm" style="display:grid;gap:12px;max-width:720px">
+<input required name="name" placeholder="Your name" style="padding:15px;border:1px solid #ddd3c1;border-radius:12px;font:inherit">
+<input required name="phone" placeholder="Mobile number" inputmode="tel" style="padding:15px;border:1px solid #ddd3c1;border-radius:12px;font:inherit">
+<input name="movein" type="date" style="padding:15px;border:1px solid #ddd3c1;border-radius:12px;font:inherit">
+<select name="bed" style="padding:15px;border:1px solid #ddd3c1;border-radius:12px;font:inherit"><option>Any available bed</option><option>Single occupancy</option><option>Sharing</option></select>
+<button class="btn primary" type="submit" style="border:0;cursor:pointer">Send Enquiry on WhatsApp</button>
+</form>
+</div>
+</section>
+<section style="margin-top:24px">
+<div class="feature" style="display:block">
+<div class="kicker">Smart Assistant</div>
+<h2 style="font-family:Georgia,serif;font-size:34px">AeroGreens AI Concierge</h2>
+<p style="color:var(--muted)">Ask a question — the assistant instantly answers common PG questions and can send you to WhatsApp for anything specific.</p>
+<div id="aiChat" style="background:#fff;border:1px solid #e4d9c3;border-radius:16px;padding:16px;min-height:120px;margin:16px 0"></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn secondary" style="background:var(--green);cursor:pointer;border:0" data-q="What is the rent?">Rent</button><button class="btn secondary" style="background:var(--green);cursor:pointer;border:0" data-q="What amenities are available?">Amenities</button><button class="btn secondary" style="background:var(--green);cursor:pointer;border:0" data-q="Where is the PG?">Location</button><button class="btn secondary" style="background:var(--green);cursor:pointer;border:0" data-q="How do I enquire?">Enquire</button></div>
+</div>
+</section>
+<section style="margin-top:24px">
+<div class="sectionhead"><div class="kicker">FAQs</div><h2>Everything you need to know.</h2></div>
+<div class="grid" style="grid-template-columns:1fr 1fr">
+<div class="card"><h3>What is the rent?</h3><p>₹8,000 per bed. Contact us for current availability and occupancy options.</p></div>
+<div class="card"><h3>Where is it?</h3><p>H.No. 98 A, AERO Greens, Opp. G Block, Aerocity, near Amar Nursing College.</p></div>
+<div class="card"><h3>What is included?</h3><p>4 BHK setup, 8 bedrooms, 6 washrooms, drawing & dining, modular kitchen and society amenities.</p></div>
+<div class="card"><h3>How can I book?</h3><p>Call 9478925730 or use WhatsApp to ask about current beds and visit arrangements.</p></div>
+</div>
+</section></main>
 <footer>© 2026 <span class="gold">AeroGreens Girls PG</span> · Premium girls accommodation in Aerocity · <a href="tel:+919478925730">9478925730</a> · <a href="tel:+919988626914">9988626914</a></footer>
-</body>
+
+<script>
+const WA='919478925730';
+const params=new URLSearchParams(location.search);
+const source=params.get('utm_source')||'direct';
+localStorage.setItem('ag_source',source);
+document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>answer(b.dataset.q));
+function answer(q){
+ const box=document.getElementById('aiChat');
+ let a='I can help with that. ';
+ if(/rent|price|cost/i.test(q)) a+='The listed rent is ₹8,000 per bed. For live availability, WhatsApp 9478925730.';
+ else if(/amenit/i.test(q)) a+='Amenities include gated society, park facing location, gym, clubhouse, 24×7 security, power backup, water supply and parking.';
+ else if(/where|location|address/i.test(q)) a+='We are at H.No. 98 A, AERO Greens, Opp. G Block, Aerocity, near Amar Nursing College, 140306.';
+ else a+='Use the enquiry form or WhatsApp 9478925730 and the team can confirm current availability and arrange a visit.';
+ box.innerHTML='<div style="font-weight:800;color:var(--green);margin-bottom:6px">AeroGreens Assistant</div><div>'+a+'</div><a class="btn primary" style="margin-top:12px" href="https://wa.me/'+WA+'?text='+encodeURIComponent(q+' — I am enquiring about AeroGreens Girls PG.')+'">Continue on WhatsApp</a>';
+}
+document.getElementById('leadForm').addEventListener('submit',e=>{
+ e.preventDefault(); const f=new FormData(e.target);
+ const msg='Hello AeroGreens Girls PG! I want to enquire. Name: '+f.get('name')+' | Phone: '+f.get('phone')+' | Move-in: '+(f.get('movein')||'Not decided')+' | Preference: '+f.get('bed')+' | Source: '+source;
+ window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+});
+if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;});
+window.addEventListener('load',()=>{ if(deferredPrompt){ const b=document.createElement('a');b.className='navbtn';b.href='#';b.textContent='Install App';b.onclick=async e=>{e.preventDefault();deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null};document.querySelector('nav').appendChild(b);}});
+</script></body>
 </html>
