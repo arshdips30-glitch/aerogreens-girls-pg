@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arshdips30-glitch.github.io/aerogreens-girls-pg/sitemap.xml
